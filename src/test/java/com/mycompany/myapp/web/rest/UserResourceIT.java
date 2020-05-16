@@ -2,6 +2,7 @@ package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.ReacttestcntApp;
 import com.mycompany.myapp.config.Constants;
+import com.mycompany.myapp.config.DatabaseTestcontainersExtension;
 import com.mycompany.myapp.domain.Authority;
 import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.UserRepository;
@@ -12,6 +13,7 @@ import com.mycompany.myapp.web.rest.vm.ManagedUserVM;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,6 +33,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureWebTestClient
 @WithMockUser(authorities = AuthoritiesConstants.ADMIN)
 @SpringBootTest(classes = ReacttestcntApp.class)
+@ExtendWith(DatabaseTestcontainersExtension.class)
 public class UserResourceIT {
 
     private static final String DEFAULT_LOGIN = "johndoe";
